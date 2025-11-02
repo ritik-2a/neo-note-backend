@@ -6,6 +6,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
+// Debugging: Log environment variables to verify they are loaded correctly
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Loaded" : "Not Loaded");
+
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
