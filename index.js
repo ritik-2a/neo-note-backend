@@ -37,6 +37,6 @@ mongoose
   });
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`server is up and running at port: ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server is up and running on port: ${PORT}`);
 });
