@@ -12,11 +12,15 @@ const otpStore = {};
 
 // Nodemailer Transporter Setup
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587, // Use 465 for secure connections
+  secure: false, // Set to true for port 465
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS, // Use App Password if using Gmail
   },
+  debug: true, // Enable debug output
+  logger: true, // Log information to console
 });
 
 // Generate OTP Function
