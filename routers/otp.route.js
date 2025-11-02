@@ -37,6 +37,7 @@ router.post("/send-otp", async (req, res) => {
     });
     res.json({ success: true, message: "OTP sent to email." });
   } catch (error) {
+    console.error("Error sending OTP:", error.message);
     res.status(500).json({ success: false, error: "Error sending OTP." });
   }
 });
@@ -47,7 +48,9 @@ router.post("/verify-otp", (req, res) => {
   const stored = otpStore[email];
 
   if (!stored || stored.otp !== otp || Date.now() > stored.expires) {
-    return res.status(400).json({ success: false, error: "Invalid or expired OTP." });
+    return res
+      .status(400)
+      .json({ success: false, error: "Invalid or expired OTP." });
   }
 
   delete otpStore[email]; // Remove OTP after verification
